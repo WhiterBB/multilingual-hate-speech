@@ -1,10 +1,36 @@
+# Entorno virtual
 .venv/
 
+# Archivos y carpetas temporales
 __pycache__/
 *.pyc
-
-*.json
 *.log
+*.tmp
+*.bak
 
+# Archivos de entrada y salida
+samples/
+transcriptions/
+*.json
+
+# Modelos entrenados y resultados
 *.bin
+results_es/
+results_fr/
+results_en/
+xlmr-*-hate-speech/
+logs/
+checkpoints/
 
+*.mp4
+*.wav
+*.zip
+*.ckpt
+
+*.ipynb_checkpoints
+
+logs/
+*.csv
+
+.DS_Store
+Thumbs.db
