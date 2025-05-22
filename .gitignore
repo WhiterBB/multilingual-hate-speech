@@ -28,6 +28,7 @@ checkpoints/
 *.ckpt
 
 *.ipynb_checkpoints
+*.ipynb
 
 logs/
 *.csv
