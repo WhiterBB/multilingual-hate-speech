@@ -18,6 +18,7 @@ transcriptions/
 results_es/
 results_fr/
 results_en/
+results/
 xlmr-*-hate-speech/
 logs/
 checkpoints/
