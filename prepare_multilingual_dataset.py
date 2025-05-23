@@ -57,6 +57,9 @@ def main():
     df_all = pd.concat([df_es, df_fr, df_en], ignore_index=True)
     df_all = df_all.sample(frac=1, random_state=42).reset_index(drop=True)
 
+    df_all = df_all.dropna(subset=["text"])
+    df_all = df_all[df_all["text"].str.strip() != ""]
+
     print("Guardando dataset unificado...")
     df_all.to_csv("multilingual_dataset.csv", index=False)
 
