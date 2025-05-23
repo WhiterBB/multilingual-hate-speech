@@ -35,17 +35,17 @@ class HateSpeechDataset(Dataset):
 
 # Load and prepare the dataset
 def load_and_prepare_data():
-    print("Cargando dataset en español...")
+    print("Loading spanish dataset...")
     dataset = load_dataset("manueltonneau/spanish-hate-speech-superset")
     ds_train = dataset["train"]
     df = ds_train.to_pandas()
 
-    print("Dividiendo dataset...")
+    print("Split dataset...")
     train_texts, test_texts, train_labels, test_labels = train_test_split(
         df["text"], df["labels"], test_size=0.2, random_state=42, stratify=df["labels"]
     )
 
-    print("Tokenizando con XLM-R...")
+    print("Tokeninizing...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     train_encodings = tokenizer(list(train_texts), truncation=True, padding=True, max_length=128)
     test_encodings = tokenizer(list(test_texts), truncation=True, padding=True, max_length=128)
@@ -57,7 +57,6 @@ def load_and_prepare_data():
 
 # Train the model
 def train_model(train_dataset, test_dataset):
-    print("Preparando modelo...")
     model = AutoModelForSequenceClassification.from_pretrained(
         MODEL_NAME,
         num_labels=2
@@ -87,29 +86,26 @@ def train_model(train_dataset, test_dataset):
         eval_dataset=test_dataset,
     )
 
-    print("Entrenando modelo...")
+    print("Training model...")
     trainer.train()
 
-    print("Evaluando modelo...")
+    print("Evaluating model...")
 
     predictions = trainer.predict(test_dataset)
     y_pred = np.argmax(predictions.predictions, axis=1)
     y_true = predictions.label_ids
 
-    print("\n📊 Reporte de clasificación:")
+    print("Classification Report:")
     print(classification_report(y_true, y_pred, target_names=["No Odio", "Odio"]))
 
-    print("\n🧮 Matriz de confusión:")
+    print("Confusion Matrix:")
     print(confusion_matrix(y_true, y_pred))
 
     # Save the model and tokenizer
-    print("Guardando modelo y tokenizer...")
+    print("Saving the model and tokenizer...")
     model.save_pretrained("./xlmr-es-hate-speech")
     tokenizer.save_pretrained("./xlmr-es-hate-speech")
 
 if __name__ == "__main__":
-    print("GPU disponible:", torch.cuda.is_available())
-    print("Dispositivo CUDA:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "No detectado")
-    print("Versión CUDA con la que fue compilado PyTorch:", torch.version.cuda)
     train_dataset, test_dataset, tokenizer = load_and_prepare_data()
     train_model(train_dataset, test_dataset)

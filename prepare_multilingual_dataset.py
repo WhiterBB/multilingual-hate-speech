@@ -23,7 +23,7 @@ def clean_text(text):
     return text.strip()
 
 def main():
-    print("Cargando datasets originales...")
+    print("Loading original datasets...")
     df_es = load_original_dataset("manueltonneau/spanish-hate-speech-superset")
     df_en = load_original_dataset("manueltonneau/english-hate-speech-superset")
     df_fr = load_original_dataset("manueltonneau/french-hate-speech-superset")
@@ -32,17 +32,17 @@ def main():
     df_en["text"] = df_en["text"].apply(clean_text)
     df_fr["text"] = df_fr["text"].apply(clean_text)
 
-    print("Cargando dataset traducido...")
+    print("Loading translated dataset...")
     df_hc = pd.read_csv("hatecheck_translated.csv")
 
-    print("Unificando datasets...")
+    print("Merging datasets...")
     df_hc_es = df_hc[["text_es", "labels"]].rename(columns={"text_es": "text"})
     df_hc_fr = df_hc[["text_fr", "labels"]].rename(columns={"text_fr": "text"})
 
     df_es = pd.concat([df_es, df_hc_es], ignore_index=True)
     df_fr = pd.concat([df_fr, df_hc_fr], ignore_index=True)
 
-    print("Balanceando datasets...")
+    print("Balancing datasets...")
     df_es = balance_dataset(df_es)
     df_fr = balance_dataset(df_fr)
     
@@ -60,7 +60,7 @@ def main():
     df_all = df_all.dropna(subset=["text"])
     df_all = df_all[df_all["text"].str.strip() != ""]
 
-    print("Guardando dataset unificado...")
+    print("Saving dataset...")
     df_all.to_csv("multilingual_dataset.csv", index=False)
 
 if __name__ == "__main__":
