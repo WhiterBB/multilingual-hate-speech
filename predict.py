@@ -2,7 +2,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch.nn.functional as F
 
-model_path = "./xlmr-multilingual-hate-speech-v3"  # Path to your fine-tuned model
+model_path = "./xlmr-multilingual-hate-speech-v3"
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
 model.eval()

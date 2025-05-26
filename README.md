@@ -6,7 +6,7 @@
   <h1>Multilingual Hate Speech Detection</h1>
   
   <p>
-    A local AI-based platform for detecting hate speech in video and multilingual text.
+    Core Machine Learning system for detecting hate speech in videos and multilingual text.
   </p>
 
 <!-- Badges -->
@@ -32,32 +32,34 @@
 
 <br />
 
-## :star2: About the Project
+## 🧠 About the Project
 
-**Multilingual Hate Speech Detection** is a complete machine learning solution that detects hate speech across Spanish, English, and French using fine-tuned transformer models. The system processes video and text locally, visualizing detected hateful segments on a timeline and providing a general hate score per video.
+**Multilingual Hate Speech Detection** is the core machine learning engine for detecting hate speech across Spanish, English, and French using fine-tuned transformer models. This repository contains the full model training pipeline, inference scripts, and video transcription using Whisper — all designed to run locally.
 
-<!-- Features -->
-### :dart: Features
-
-- Whisper-based transcription of video content 🎙️
-- Detection of hate speech in **three languages**: Spanish 🇪🇸, English 🇬🇧, and French 🇫🇷
-- Custom fine-tuned model based on XLM-RoBERTa 💡
-- Dataset enrichment with external structured data (HateCheck)
-- Balanced and cleaned multilingual training set 🧹
-- Probability-based hate level evaluation (light, moderate, severe)
-- Timeline visualization of hateful segments on video 🕒
-- Local execution for privacy and efficiency ⚙️
+> 📦 For the complete web app with FastAPI and React, see the upcoming [Multilingual Hate Speech Web App Repository](https://github.com/WhiterBB/multilingual-hate-speech-app) (coming soon).
 
 ---
 
-### 🚀 Built With
+### 🎯 Features
+
+- Whisper-based transcription of video content 🎙️
+- Detection of hate speech in **three languages**: Spanish 🇪🇸, English 🇬🇧, and French 🇫🇷
+- Fine-tuned model based on **XLM-RoBERTa**
+- Dataset enrichment using structured sources like HateCheck
+- Clean, balanced multilingual training sets
+- Probabilistic hate level classification (light, moderate, severe)
+- Local execution with CLI and script-based testing
+
+---
+
+### 🛠 Built With
 
 * ![Python](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 * ![Transformers](https://img.shields.io/badge/transformers-ffcc00?style=for-the-badge&logo=huggingface&logoColor=black)
 * ![PyTorch](https://img.shields.io/badge/pytorch-ee4c2c?style=for-the-badge&logo=pytorch&logoColor=white)
 * ![HuggingFace](https://img.shields.io/badge/huggingface-ffd21f?style=for-the-badge&logo=huggingface&logoColor=black)
-* ![Whisper](https://img.shields.io/badge/whisper-555?style=for-the-badge)
+* ![OpenAI Whisper](https://img.shields.io/badge/whisper-555?style=for-the-badge)
 * ![VSCode](https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 * ![Git](https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-
+---

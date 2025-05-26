@@ -7,12 +7,12 @@ MODEL_PATH = "./xlmr-multilingual-hate-speech-v3"
 
 CSV_PATH = "./data/bias_tester.csv"
 
-print("📦 Cargando modelo...")
+print("Loading Model...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
 model.eval() 
 
-print("📂 Cargando archivo CSV de prueba...")
+print("Loading CSV file...")
 df = pd.read_csv(CSV_PATH)
 
 def predict(text):
@@ -26,7 +26,7 @@ def predict(text):
     return predicted_class, confidence
 
 
-print("🔍 Evaluando frases...")
+print("Evaluating...")
 results = []
 for _, row in df.iterrows():
     text = row["text"]
@@ -49,5 +49,5 @@ total = len(df_results)
 correct = df_results["correct"].sum()
 accuracy = round((correct / total) * 100, 2)
 
-print(f"✅ Evaluación completa. Precisión: {accuracy}% ({correct} de {total})")
-print("📄 Resultados guardados en: bias_tester_results_v3.csv")
+print(f"Evaluation Completed. Accuracy: {accuracy}% ({correct} of {total})")
+print("Results saved as: bias_tester_results_v3.csv")
