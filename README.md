@@ -36,7 +36,7 @@
 
 **Multilingual Hate Speech Detection** is the core machine learning engine for detecting hate speech across Spanish, English, and French using fine-tuned transformer models. This repository contains the full model training pipeline, inference scripts, and video transcription using Whisper — all designed to run locally.
 
-> 📦 For the complete web app with FastAPI and React, see the upcoming [Multilingual Hate Speech Web App Repository](https://github.com/WhiterBB/multilingual-hate-speech-app) (coming soon).
+> 📦 For the complete web app with FastAPI and React, see the upcoming [Multilingual Hate Speech Web App Repository](https://github.com/WhiterBB/hatespeech-detector-app)
 
 ---
 
